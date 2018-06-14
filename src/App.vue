@@ -1,6 +1,17 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <header></header>
+    <div class="content"></div>
+    <footer>
+          <nav class="main-nav">
+            <ul>
+                <router-link tag="li" to="/home" exact>Home</router-link>
+                <router-link tag="li" to="/search">Search</router-link>
+                <router-link tag="li" to="/cart">Cart</router-link>
+                <router-link tag="li" to="/mine">Mine</router-link>
+            </ul>
+        </nav> 
+       </footer>
     <router-view/>
   </div>
 </template>

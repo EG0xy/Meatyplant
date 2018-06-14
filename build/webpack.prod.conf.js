@@ -115,7 +115,13 @@ const webpackConfig = merge(baseWebpackConfig, {
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])
+    ]),
+        // 配置全局插件或者库
+        new webpack.ProvidePlugin({
+          $: 'jquery',
+          jQuery: 'jquery',
+          axios:'axios'
+        })
   ]
 })
 
