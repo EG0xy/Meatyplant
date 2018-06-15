@@ -11,18 +11,18 @@ export default new Router({
   mode: 'history',
   routes: [
     {
-      path: '/',
-      name: 'home',
+      path: '/home',
+      name: 'Home',
       component: Home
     },
     {
-      path: '/',
-      name: 'search',
+      path: '/search',
+      name: 'Search',
       component: Search
     },
     {
-      path: '/',
-      name: 'cart',
+      path: '/cart',
+      name: 'Cart',
       component: Cart
     },
     {

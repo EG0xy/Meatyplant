@@ -30,7 +30,9 @@ module.exports = {
       '@page': resolve('src/page'),
       'bootcss':'bootstrap/dist/css/bootstrap.css',
       'swiper-css':'swiper/dist/css/swiper.css',
-      'swiper-js':'swiper/dist/js/swiper.js'
+      'swiper-js':'swiper/dist/js/swiper.js',
+      'layui-css':'layui-src/dist/css/layui.css',
+      'layui-js':'layui-src/dist/css/layui.all.js'
     }
   },
   module: {
