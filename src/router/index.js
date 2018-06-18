@@ -4,6 +4,7 @@ import Home from '@page/home/Home'
 import Search from '@page/search/Search'
 import Cart from '@page/cart/Cart'
 import Mine from '@page/mine/Mine'
+import PlantInfo from '@page/plantInfo/PlantInfo'
 
 Vue.use(Router)
 
@@ -29,6 +30,11 @@ export default new Router({
       path: '/',
       name: 'mine',
       component: Mine
+    },
+    {
+      path: '/plantInfo',
+      name: 'PlantInfo',
+      component: PlantInfo
     }
   ],
   linkActiveClass: 'active',

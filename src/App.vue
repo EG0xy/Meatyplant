@@ -4,7 +4,7 @@
          <span class="title">{{title}}</span>
      </header>
      <div class="content">
-    <router-view/>
+    <router-view @getIndex="getIndex" :plant="plantInfo"/>
      </div>
      <footer>
                    <nav class="main-nav">
@@ -25,12 +25,18 @@ export default {
   data(){
       return{
       title:'',
-      navItem:['首页','搜索','购物车','个人中心']
+      navItem:['首页','搜索','购物车','个人中心'],
+      plantInfo:""
       }
   },
   created(){
      this.title=this.navItem[0];
   },
+    methods:{
+      getIndex (inx){
+          this.plantInfo=inx;
+      }
+    }
 
 }
 </script>
@@ -67,8 +73,9 @@ header{
     background-color: pink;
 }
 footer{
-    height: 50px;
-    line-height: 50px;
+    height: 60px;
+    line-height: 60px;
+    // position: fixed;
 }
 .content{
     height:calc(100% - 110px) ;

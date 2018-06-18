@@ -19,7 +19,22 @@
            </div>
            <!-- 热门推荐 -->
            <div class="clssTitle"><i class="iconfont">&#xe6a6;</i><h3>热门推荐</h3></div>
-              
+             <div class=" plantContent layui-container">
+               <ul>
+                    <div class="layui-row">
+                 <li v-for="(plant,index) in plantInfo"  :key="plant.id" @click="plantData(index)" v-if="index>=7&&index<=11">
+                
+                     <div class="layui-col-xs12">
+                  <img :src="plant.images" class="plantImg">
+                  <div class="shade">
+                    <p class="plantTitle">{{plant.title}}</p>
+                    <p class="plantClass">#{{plant.class}}</p>
+                  </div>
+                     </div>
+                 </li>
+                 </div>
+               </ul>
+             </div>
           </div>
 </template>
 
@@ -58,14 +73,22 @@ export default {
     });
     },
     created() {
-        axios.get('/data/plant.json').then((resp) => {
-            this.plantInfo = resp.data;
+        axios.get('http://localhost:8080/static/plant.json').then((resp) => {
+      
+            this.plantInfo= resp.data;
+                console.log(this.plantInfo )
         });
+    },
+    methods:{
+      plantData(index){
+         this.$emit('getIndex',this.plantInfo[index]);
+            this.$router.push({name: "PlantInfo"})
+      }
     }
 }
 </script>
-
 <style scoped lang="scss">
+  //  @import './style/home.css';
 html, body {
       position: relative;
       height: 100%;
@@ -119,15 +142,44 @@ html, body {
         font-size: 1.3rem;
       }
     }
+       img{
+        width: 100%;
+      }
+      .layui-col-xs6{
+        padding-left: 5px;
+      }
     .layui-container{
       padding-top: 20px;
     }
+    .plantContent{
+      position: relative;
     .layui-row{
-      .layui-col-xs6{
-        padding-left:5px;
+      .layui-col-xs12{
+        margin-top: 20px;
+        .shade{
+          width: 100%;
+          height: 65px;
+          background-color: white;
+          position: absolute;
+          bottom: 0px;
+        }
       }
-      img{
-        width: 100%;
-      }
+    }
+    .plantTitle{
+      // display: inline-block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 50%;
+    padding-left: 25%;
+      font-size:1.2rem;
+      padding-top:10px;
+      color:#333;
+    }
+    .plantClass{
+      // text-align: left;
+      // padding-left: 5px;
+      color:#808080;
+    }
     }
 </style>
