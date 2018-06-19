@@ -6,18 +6,23 @@
             </div>
             <!-- <div class="swiper-pagination"></div> -->
          </div>
-       
         <p class="price">{{plant.price | currency}}</p>
         <h3 class="plantitle">{{plant.title}}</h3>
          <p class="layui-row"><span class="layui-col-xs5">库存{{plant.num}}</span><span class="layui-col-xs6">销量{{plant.sales}}</span></p>
         <!-- <img v-for="(item) in plant.img" :key="item.id" :src="item.img" alt="" > -->
+
        
+
         <div>
              <p class="layui-row"><span class="layui-col-xs2">促销</span><span v-html="plant.favourable" class="layui-col-xs10"></span></p>
              <p class="layui-row"><span class="layui-col-xs2">颜色</span><span class="layui-col-xs10">{{plant.color}}</span></p>
              <p class="layui-row"><span class="layui-col-xs2">规格</span><span class="layui-col-xs10">{{plant.flowerpot}}</span></p>
              <p class="layui-row"><span class="layui-col-xs2">分类</span><span class="layui-col-xs10">{{plant.class}}</span></p>
+
+
+
             
+
         </div>
         <!-- 加入购物车和立即购买 -->
         <div class="shop">
@@ -65,6 +70,10 @@ export default {
     //   播放速度
       autoplay: {
         delay: 2500,
+        //
+        disableOnInteraction: false,
+      },
+    //
         // 
         disableOnInteraction: false,
       },
@@ -112,7 +121,9 @@ filters: {
     return value;
 }
 }
+
     
+
 }
 
 </script>
@@ -164,7 +175,8 @@ html,body{
             height: auto;
             // display: inline;
              margin-top: 10px;
-     
+
+
         }
         .shop{
             width: 100%;

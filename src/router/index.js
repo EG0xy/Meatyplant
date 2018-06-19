@@ -27,9 +27,9 @@ export default new Router({
       component: Cart
     },
     {
-      path: '/',
-      name: 'mine',
-      component: Mine
+      path: '/mine',
+      name: 'Mine',
+      coonent: Mine
     },
     {
       path: '/plantInfo',
