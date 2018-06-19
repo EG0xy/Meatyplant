@@ -2,6 +2,7 @@
     <div class="PlantInfo">
            <div class="swiper-container">
             <div class="swiper-wrapper">
+                <p v-show="ShowState" ref="id">{{plant.id}}</p>
               <div class="swiper-slide" v-for="(item) in plant.img" :key="item.id">  <img  :src="item.img" alt="" ></div>
             </div>
             <!-- <div class="swiper-pagination"></div> -->
@@ -20,9 +21,11 @@
             
         </div>
         <!-- 加入购物车和立即购买 -->
-        <div class="shop">
-         <button @click="ShowState=true">加入购物车</button>
-         <button>立即购买</button>
+        <div class="shop layui-row">
+            <div class="layui-col-xs6">
+         <button @click="ShowState=true">加入购物车</button></div>
+         <div class="layui-col-xs6">
+         <button>立即购买</button></div>
          <div class="model" v-show="ShowState">
              <div class="shopImg layui-row"> <img :src="plant.images" class="images layui-col-xs6"><span class="shopCon"><p class="price">{{plant.price | currency}}</p><p>库存{{plant.num}}件</p></span><span class="exit" @click="exit">&times;</span>
              </div>
@@ -35,10 +38,10 @@
               <hr>
              </div>
               <div class="colorClass"><h3 class="plantitle">数量</h3>
-              <div class="num layui-row"><span class=" layui-col-xs4">购买数量</span><div class="count layui-col-xs8"><input type="button" value="-"><input type="text" value="0"><input type="button" value="+"></div></div>
+              <div class="num layui-row"><span class=" layui-col-xs4">购买数量</span><div class="count layui-col-xs8"><input type="button" value="-" class="button" @click="reduce"><span class="text">{{numVal}}</span><input type="button" value="+" class="button" @click="add"></div></div>
               <hr>
              </div>
-             <button>确认</button>
+             <button @click="confirm">确认</button>
          </div>
         </div>
     </div>
@@ -50,11 +53,12 @@ import 'swiper-css';
 import Swiper from 'swiper-js';
 export default {
       name: 'PlantInfo',
-    props:["plant"],
+      props:["plant"],
     data(){
         return {
             index:0,
             ShowState:false,
+            numVal:0
         }
     },
          mounted(){
@@ -86,13 +90,30 @@ export default {
         },
         exit(){
                this.ShowState=false;
-        }
+        },
+        add(){  
+             this.numVal++  
+        },  
+        reduce(){  
+          this.numVal--  
+          if(this.numVal<=1)
+          {
+              this.numVal=1;
+          }
+     }, 
+     confirm(){
+      let id =this.$refs.id.innerText;
+      let plantNum = this.numVal;
+       let storage=window.localStorage;
+        storage.setItem('id',id)
+        storage.setItem('plantNum',plantNum)
+     }
     },
     // 货币符号
 filters: {
     currency(value){
        value=parseInt(value);
-       console.log(typeof value)
+    //    console.log(typeof value)
     if(typeof value === 'number') {
         value = '￥' + parseFloat(value.toFixed(2)).toLocaleString();
         // 如果有小数
@@ -195,6 +216,9 @@ html,body{
                     .shopImg{
                         height:100px;
                     }
+                    .num{
+                        margin-top: 10px;
+                    }
                     .exit{
                         display: inline-block;
                         width:40px;
@@ -207,6 +231,18 @@ html,body{
                         top:0px;
                         right: 0px;
                         color: #fff;
+                    }
+                    .text{
+                        width: 80px;
+                        height: 30px;
+                        text-align: center;
+                    }
+                    .button{
+                        width:50px;
+                        height: 30px;
+                    }
+                    input{
+                        margin-left: 10px;
                     }
             }
         }
