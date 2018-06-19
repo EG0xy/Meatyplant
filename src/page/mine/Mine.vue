@@ -1,5 +1,6 @@
 <template>
   <div id="mine">
+
     <div class="mine">
       <div class="portrait">
         <!-- 头像 -->
@@ -23,14 +24,21 @@
         <li>其他<i class="icon_font"><img src="/static/images/icon/arrow.png"></i></li>
       </ul>
     </div>
+ 
+
   </div>
 </template>
 
 <script>
+
 export default{
+=======
+export default {
+
   name: 'mine'
 }
 </script>
+
 
 <style lang="scss" scoped>
   $color:#e49c9d;
@@ -121,3 +129,7 @@ export default{
     width: 25px;
   }
 </style>
+
+<style>
+</style>
+

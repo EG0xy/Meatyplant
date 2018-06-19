@@ -29,7 +29,7 @@ export default new Router({
     {
       path: '/mine',
       name: 'Mine',
-      component: Mine
+      coonent: Mine
     },
     {
       path: '/plantInfo',

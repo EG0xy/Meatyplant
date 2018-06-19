@@ -7,14 +7,19 @@
     <router-view @getIndex="getIndex" :plant="plantInfo"/>
      </div>
      <footer>
+
           <nav class="main-nav">
+                   <nav class="main-nav">
             <ul>
                 <router-link tag="li" to="/home" exact><i class="iconfont">&#xe605;</i></router-link>
                 <router-link tag="li" to="/search"><i class="iconfont">&#xe627;</i></router-link>
                 <router-link tag="li" to="/cart"><i class="iconfont">&#xe67d;</i></router-link>
                 <router-link tag="li" to="/mine"><i class="iconfont">&#xe618;</i></router-link>
             </ul>
+
         </nav>
+
+        </nav> 
      </footer>
   </div>
 </template>
@@ -54,12 +59,19 @@ html,body{
     height: 100%;
     font-size: 16px;
 }
+
 .iconfont {
   font-family:"iconfont" !important;
   font-size:26px;
   font-style:normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+.iconfont {  
+  font-family:"iconfont" !important;  
+  font-size:26px;  
+  font-style:normal;  
+  -webkit-font-smoothing: antialiased;  
+  -moz-osx-font-smoothing: grayscale;  
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
