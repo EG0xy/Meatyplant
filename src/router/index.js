@@ -27,7 +27,7 @@ export default new Router({
       component: Cart
     },
     {
-      path: '/',
+      path: '/mine',
       name: 'mine',
       component: Mine
     },

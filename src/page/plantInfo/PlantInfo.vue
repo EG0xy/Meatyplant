@@ -38,10 +38,10 @@
               <hr>
              </div>
               <div class="colorClass"><h3 class="plantitle">数量</h3>
-              <div class="num layui-row"><span class=" layui-col-xs4">购买数量</span><div class="count layui-col-xs8"><input type="button" value="-" class="button" @click="reduce"><span class="text">{{numVal}}</span><input type="button" value="+" class="button" @click="add"></div></div>
+              <div class="num layui-row"><span class=" layui-col-xs4">购买数量</span><div class="count layui-col-xs8"><input type="button" value="-" class="button" @click="reduce"><input class="text" v-model="numVal"><input type="button" value="+" class="button" @click="add"></div></div>
               <hr>
              </div>
-             <button @click="confirm">确认</button>
+             <input @click="confirm" class="confirm" value="确认">
          </div>
         </div>
     </div>
@@ -58,7 +58,8 @@ export default {
         return {
             index:0,
             ShowState:false,
-            numVal:0
+            numVal:1,
+            id:[]
         }
     },
          mounted(){
@@ -102,11 +103,15 @@ export default {
           }
      }, 
      confirm(){
-      let id =this.$refs.id.innerText;
+    //   let id =[];
+      this.id.push(this.$refs.id.innerText);
       let plantNum = this.numVal;
        let storage=window.localStorage;
-        storage.setItem('id',id)
+        storage.setItem('id',this.id)
+        console.log(this.id)
         storage.setItem('plantNum',plantNum)
+        this.ShowState = false;
+
      }
     },
     // 货币符号
@@ -245,6 +250,18 @@ html,body{
                         margin-left: 10px;
                     }
             }
+        }
+        .confirm{
+                text-align: center;
+                width: 90%;
+                line-height:40px;
+                border-radius: 8%;
+                border:0px;
+                outline:none;
+                background-color: pink;
+                color: white;
+                font-weight: bolder;
+                font-size: 1rem;
         }
 </style>
 
